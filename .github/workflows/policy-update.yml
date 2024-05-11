@@ -29,7 +29,9 @@ jobs:
           echo ${{ steps.getfile.outputs.files }}
 
       - name: generate mermaid images
-        run:  for i in ${{ steps.getfile.outputs.files }}; do bash mermaid.sh $i; done
+        run:  |
+          chmod +x mermaid.sh
+          for i in ${{ steps.getfile.outputs.files }}; do ./mermaid.sh $i; done
 
       - name: Run Bash script
         run:  for i in ${{ steps.getfile.outputs.files }}; do bash run.sh $i; done
