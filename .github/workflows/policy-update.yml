@@ -1,0 +1,33 @@
+name: policy-update
+
+on:
+  push:
+    branches:
+      - main
+      - test1
+
+permissions:
+      id-token: write
+      contents: read
+
+jobs:
+  bash-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: get changed files
+        id: getfile
+        run: |
+          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -e '.*\.json$' | xargs)"
+
+      - name: policy files changed
+        run: |
+          echo ${{ steps.getfile.outputs.files }}
+
+      - name: generate mermaid images
+        run: |
+          for i in ${{ steps.getfile.outputs.files }}; do bash mermaid.sh $i; done
+
+      - name: Run Bash script
+        run:  for i in ${{ steps.getfile.outputs.files }}; do bash run.sh $i; done
