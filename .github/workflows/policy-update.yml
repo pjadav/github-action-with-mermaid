@@ -6,7 +6,9 @@ on:
       - main
       - test1
 
-permissions: write-all
+permissions:
+      id-token: write
+      contents: read
 
 jobs:
   bash-script:

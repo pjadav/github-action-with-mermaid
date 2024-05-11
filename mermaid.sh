@@ -46,7 +46,6 @@ then
   git status
   git add $filePathForMerMaid
   git -c user.email="your@email.com" -c user.name="RTDP" commit -m "add $filePathForMerMaid file"
-  git push origin main
   rm -rf $filePathForMerMaid.md
 else
   rm -rf $fileName.text
