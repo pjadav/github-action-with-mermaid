@@ -31,14 +31,5 @@ jobs:
       - name: generate mermaid images
         run:  for i in ${{ steps.getfile.outputs.files }}; do bash mermaid.sh $i; done
 
-      - name: Git changes
-        run: |
-          git add .
-          git config --local user.email "97456030+pjadav@users.noreply.github.com"
-          git config --local user.name "pjadav"
-          git commit -a -m "Add changes"
-          git pull
-          git push
-
       - name: Run Bash script
         run:  for i in ${{ steps.getfile.outputs.files }}; do bash run.sh $i; done

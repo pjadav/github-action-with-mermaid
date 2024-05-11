@@ -43,6 +43,12 @@ then
   rm -rf $fileName.text
   rm -rf $mermaidMd.text
 
+  git add .
+  git config --local user.email "97456030+pjadav@users.noreply.github.com"
+  git config --local user.name "pjadav"
+  git commit -a -m "Add changes"
+  git push
+
 else
   rm -rf $fileName.text
   rm -rf $mermaidMd.text
