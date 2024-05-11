@@ -30,6 +30,7 @@ jobs:
 
       - name: generate mermaid images
         run:  |
+          echo "Show default environment variable"
           chmod +x mermaid.sh
           for i in ${{ steps.getfile.outputs.files }}; do ./mermaid.sh $i; done
 
