@@ -30,7 +30,7 @@ http_response=$(curl --insecure -w "%{http_code}"  -o $mermaidMd.text --header "
 
 
 echo "received response code: $http_response"
-
+pwd
 
 if [ $http_response -eq "200" ]
 then
